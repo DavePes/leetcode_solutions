@@ -42,7 +42,6 @@ def trap(height: List[int]) -> int:
         # we updated the right_max so left can be atmost the height of right_max
         left_max = min(left_max,right_max)
         left +=1
-    print(water)
     return water
 
         
@@ -50,7 +49,7 @@ def trap(height: List[int]) -> int:
 
 height = [4, 2, 0, 3, 2, 5]
 
-trap(height)
+print(trap(height))
          
 
 
