@@ -1,7 +1,4 @@
 class Solution:
-    def __init__(self):
-        self.cache = {}
-        self.coords_list = []
     def setTrue(self,h,v,j, vertical_d, diagonal, vertical_list):
         vertical_d[v] = True
         diagonal["diff"][h-v] = True
@@ -19,10 +16,6 @@ class Solution:
             return 0
         h = n - x 
         for j, v in enumerate(vertical_list):
-            self.coords_list.append((h,v))
-            if tuple(sorted(self.coords_list)) in self.cache:
-                self.coords_list.pop()
-                continue
             if vertical_d[v] == False:
                 diff = h - v
                 sum = h + v
@@ -30,7 +23,6 @@ class Solution:
                     if diagonal["sum"][sum] == False:
                         self.setTrue(h,v,j, vertical_d, diagonal, vertical_list)
                         total += self.recurse(x-1,horizontal_d, vertical_d, diagonal,horizontal_list, vertical_list,n)
-                        self.cache[tuple(sorted(self.coords_list))] = True
                         horizontal_list.append(h)
                         vertical_list.append(v)
                         # do swaps
@@ -39,7 +31,6 @@ class Solution:
                         diagonal["sum"][sum] = False
                         horizontal_d[h] = False
                         vertical_d[v] = False
-            self.coords_list.pop()
         return total
 
 
@@ -61,4 +52,4 @@ class Solution:
     
 
 A = Solution()
-print(A.totalNQueens(9))
+print(A.totalNQueens(8))
